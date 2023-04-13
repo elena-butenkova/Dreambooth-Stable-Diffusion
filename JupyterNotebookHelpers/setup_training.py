@@ -154,7 +154,11 @@ class SetupTraining:
         # bind the save_form_button to the submit_form_click event
         self.save_form_button.on_click(self.submit_form_click)
 
-        print(f"Please, upload training images to {self.training_images_save_path} BEFORE PRESSING SAVE BUTTON")
+        label = widgets.Label(
+            value=f"Please, upload training images to {self.training_images_save_path} BEFORE PRESSING SAVE BUTTON"
+        )
+
+        self.form_widgets.append(label)
         if os.path.exists(self.training_images_save_path):
             # remove existing images
             shutil.rmtree(self.training_images_save_path)
