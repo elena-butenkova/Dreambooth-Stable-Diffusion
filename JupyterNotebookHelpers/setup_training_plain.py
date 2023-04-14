@@ -36,6 +36,10 @@ def run(project_name: str, token: str, class_word: str, learning_rate: float, se
         training_images_path: str = "./training_images", config_save_path: str = "./joepenna-dreambooth-configs"):
 
     number_of_pictures = get_number_of_images(training_images_path)
+    if number_of_pictures < 1:
+        print("❌ NO TRAINING IMAGES FOUND PLEASE CHECK ./training_images dir")
+        return
+
     regularization_images_path = download_regularization_imgs(dataset)
 
     config = JoePennaDreamboothConfigSchemaV1()
